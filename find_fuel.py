@@ -11,7 +11,7 @@ from streamlit_geolocation import streamlit_geolocation
 def preparer_donnees(download_actif):
 
     url = "https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/prix-des-carburants-en-france-flux-instantane-v2/exports/csv?lang=fr&timezone=Europe%2FParis&use_labels=true&delimiter=%3B"
-    os.chdir(r"/home/antonin/Documents/L2/Projet")
+    # os.chdir(r"/home/antonin/Documents/L2/Projet")
 
 
     # carb = pd.read_csv('Donnees/carburant.csv', sep=',', on_bad_lines='skip')
