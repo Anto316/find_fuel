@@ -39,10 +39,13 @@ coord_prix = preparer_donnees(download_activation)
 st.write("Localisez-moi pour trouver les stations :")
 loc = streamlit_geolocation()
 
-if loc['latitude'] is not None:
-    lat_init = loc['latitude']
-    long_init = loc['longitude']
+if loc['latitude'] is None or loc['longitude'] is None:
+    st.info("👆 Veuillez cliquer sur le bouton de localisation pour afficher la carte.")
     st.stop()
+
+lat_init = loc['latitude']
+long_init = loc['longitude']
+st.success("Position trouvée, recherche des stations en cours...")
     # st.success(f"Position trouvée : {lat_init}, {long_init}")
 #else :
  #   lat_init = 45.1916697
