@@ -42,6 +42,7 @@ loc = streamlit_geolocation()
 if loc['latitude'] is not None:
     lat_init = loc['latitude']
     long_init = loc['longitude']
+    st.stop()
     # st.success(f"Position trouvée : {lat_init}, {long_init}")
 #else :
  #   lat_init = 45.1916697
