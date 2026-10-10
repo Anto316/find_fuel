@@ -45,7 +45,6 @@ if loc['latitude'] is None or loc['longitude'] is None:
 
 lat_init = loc['latitude']
 long_init = loc['longitude']
-st.success("Position trouvée, recherche des stations en cours...")
     # st.success(f"Position trouvée : {lat_init}, {long_init}")
 #else :
  #   lat_init = 45.1916697
