@@ -4,7 +4,7 @@ import numpy as np
 import folium as fl
 from folium.plugins import LocateControl
 import streamlit as st
-from streamlit_folium import st_folium
+from streamlit_folium import folium_static
 from streamlit_geolocation import streamlit_geolocation
 
 @st.cache_data
@@ -32,25 +32,25 @@ def preparer_donnees(download_actif):
 
 st.title("Prix des carburants en temps réel")
 
-download_activation = False
+download_activation = True
 
 coord_prix = preparer_donnees(download_activation)
 
-st.write("📍 Localisez-moi pour trouver les stations :")
+st.write("Localisez-moi pour trouver les stations :")
 loc = streamlit_geolocation()
 
 if loc['latitude'] is not None:
     lat_init = loc['latitude']
     long_init = loc['longitude']
-    st.success(f"Position trouvée : {lat_init}, {long_init}")
-else :
-    lat_init = 45.1916697
-    long_init = 5.7652909
+    # st.success(f"Position trouvée : {lat_init}, {long_init}")
+#else :
+ #   lat_init = 45.1916697
+  #  long_init = 5.7652909
 
 
 map_init = fl.Map(
     location=[lat_init, long_init],
-    zoom_start=5
+    zoom_start=12
 )
 
 nbr_station = len(coord_prix.iloc[: ,0])
@@ -84,8 +84,8 @@ for i in range(nbr_station):
 LocateControl(
     auto_start=True,      # Ne lance pas la recherche automatiquement au chargement
     flyTo=True,           # Anime le déplacement vers la position
-    keepCurrentZoomLevel=False
+    keepCurrentZoomLevel=True
 ).add_to(map_init)
         
 #map_dlst
-st_folium(map_init, width=800, height=600)
+folium_static(map_init, width=800, height=600)
