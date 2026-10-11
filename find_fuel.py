@@ -58,7 +58,14 @@ map_init = fl.Map(
 
 nbr_station = len(coord_prix.iloc[: ,0])
 compteur = 0
-nbr_stations = 20
+nbr_stations = st.number_input(
+    "Nombre de stations",
+    min_value=1,
+    max_value=100,
+    value=20,
+    step=1
+)
+
 
 rayon_km = st.number_input(
     "Rayon de recherches (en km)",
