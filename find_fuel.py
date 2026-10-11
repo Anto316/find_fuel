@@ -74,7 +74,7 @@ type_carburant = st.sidebar.selectbox("Carburant", ("Gazole", "SP95", "E85", "GP
     max_value=100,
     value=20,
     step=1
-)""""
+)"""
 nbr_stations = 50
 
 rayon_km = st.number_input(
