@@ -60,7 +60,14 @@ nbr_station = len(coord_prix.iloc[: ,0])
 compteur = 0
 nbr_stations = 20
 
-rayon_km = 10.0
+rayon_km = st.number_input(
+    "Rayon de recherches (en km),
+    min_value=1.0,
+    max_value=100.0,
+    value=10.0,
+    step=1.0"
+)
+
 rayon_degré = rayon_km / 111.0
 
 for i in range(nbr_station):
