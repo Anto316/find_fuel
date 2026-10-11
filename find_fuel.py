@@ -61,7 +61,7 @@ compteur = 0
 nbr_stations = 20
 
 rayon_km = st.number_input(
-    "Rayon de recherches (en km),
+    "Rayon de recherches (en km)",
     min_value=1.0,
     max_value=100.0,
     value=10.0,
