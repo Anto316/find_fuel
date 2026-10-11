@@ -4,4 +4,4 @@ folium
 streamlit
 streamlit-folium
 streamlit_geolocation
-geopy.geocoders
+geopy
