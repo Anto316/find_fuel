@@ -102,8 +102,11 @@ for i in range(nbr_station):
     distance = ((long_i - long_init)**2 + (lat_i - lat_init)**2)**(1/2)
     
     if ((distance <= rayon_degré) and (compteur < nbr_stations)):
+        prix = str(coord_prix[f"Prix {type_carburant}"].iloc[i])
+        if (prix != "nan"):
+            prix = f"{prix}€"
         (fl.Marker(location = [lat_i, long_i],
-                       popup = f"{str(coord_prix[f"Prix {type_carburant}"].iloc[i])}€"
+                       popup = prix
                        )).add_to(map_init)
         
         compteur += 1
