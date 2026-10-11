@@ -26,12 +26,12 @@ def preparer_donnees(download_actif):
     coord_prix[0] = pd.to_numeric(carb['latitude'], errors='coerce')
     coord_prix[1] = pd.to_numeric(carb['longitude'], errors='coerce')
 
-    coord_prix[2] = carb['Prix Gazole']
-    coord_prix[3] = carb['Prix SP95']
-    coord_prix[4] = carb['Prix E85']
-    coord_prix[5] = carb['Prix GPLc']
-    coord_prix[6] = carb['Prix E10']
-    coord_prix[7] = carb['Prix SP98']
+    coord_prix['Prix Gazole'] = carb['Prix Gazole']
+    coord_prix['Prix SP95'] = carb['Prix SP95']
+    coord_prix['Prix E85'] = carb['Prix E85']
+    coord_prix['Prix GPlc'] = carb['Prix GPLc']
+    coord_prix['Prix E10'] = carb['Prix E10']
+    coord_prix['Prix SP98'] = carb['Prix SP98']
 
 
     
@@ -103,7 +103,7 @@ for i in range(nbr_station):
     
     if ((distance <= rayon_degré) and (compteur < nbr_stations)):
         (fl.Marker(location = [lat_i, long_i],
-                       popup = f"{str(coord_prix[f"Prix {type_carburant}"])}€"
+                       popup = f"{str(coord_prix[f"Prix {type_carburant}"].iloc[i])}€"
                        )).add_to(map_init)
         
         compteur += 1
