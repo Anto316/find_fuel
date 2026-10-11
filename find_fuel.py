@@ -51,11 +51,7 @@ adresse = st.sidebar.text_input(
     "Entrez votre adresse de départ :"
 )
 
-if ((loc['latitude'] is not None) and (loc['longitude'] is not None)):
-    lat_init = loc['latitude']
-    long_init = loc['longitude']
-
-elif (adresse):
+if (adresse):
     geolocator = Nominatim(user_agent="find_fuel_antonin")
     localisation = geolocator.geocode(adresse)
 
@@ -66,6 +62,9 @@ elif (adresse):
     else:
         st.sidebar.error("Adresse introuvable, essayez avec le nom de la ville.")
         st.stop()
+if ((loc['latitude'] is not None) and (loc['longitude'] is not None)):
+    lat_init = loc['latitude']
+    long_init = loc['longitude']
 else:
     st.info("👆 Veuillez cliquer sur le bouton de localisation pour afficher la carte.")
     st.stop()
