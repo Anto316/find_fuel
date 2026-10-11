@@ -65,7 +65,7 @@ rayon_km = st.number_input(
     min_value=1.0,
     max_value=100.0,
     value=10.0,
-    step=1.0"
+    step=1.0
 )
 
 rayon_degré = rayon_km / 111.0
