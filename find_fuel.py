@@ -58,7 +58,7 @@ if (adresse):
     if (localisation):
         lat_init = localisation.latitude
         long_init = localisation.longitude
-        st.sidebar.success("Position trouvée !")
+        st.sidebar.success(f"Position trouvée ! Centré sur {localisation.adresse}")
     else:
         st.sidebar.error("Adresse introuvable, essayez avec le nom de la ville.")
         st.stop()
@@ -106,15 +106,15 @@ rayon_km = st.sidebar.number_input(
 rayon_degré = rayon_km / 111.0
 
 for i in range(nbr_station):
-    lat_i = coord_prix.iloc[i,0]
-    long_i = coord_prix.iloc[i,1]
+    lat_i = coord_prix['latitude'].iloc[i]
+    long_i = coord_prix['longitude'].iloc[i]
 
     if pd.isna(lat_i) or pd.isna(long_i):
         continue
     
-    if (lat_i > 90):
+    if (abs(lat_i) > 90):
         lat_i = lat_i / 100000
-    if (long_i > 90):
+    if (abs(long_i) > 90):
         long_i = long_i / 100000
         
     distance = ((long_i - long_init)**2 + (lat_i - lat_init)**2)**(1/2)
@@ -128,6 +128,9 @@ for i in range(nbr_station):
                        )).add_to(map_init)
         
         compteur += 1
+        
+        if compteur >= nbr_stations:
+            break
 
 LocateControl(
     auto_start=True,    
