@@ -27,6 +27,13 @@ def preparer_donnees(download_actif):
     coord_prix[1] = pd.to_numeric(carb['longitude'], errors='coerce')
 
     coord_prix[2] = carb['Prix Gazole']
+    coord_prix[3] = carb['Prix SP95']
+    coord_prix[4] = carb['Prix E85']
+    coord_prix[5] = carb['Prix GPLc']
+    coord_prix[6] = carb['Prix E10']
+    coord_prix[7] = carb['Prix SP98']
+
+
     
     return coord_prix
 
@@ -58,14 +65,17 @@ map_init = fl.Map(
 
 nbr_station = len(coord_prix.iloc[: ,0])
 compteur = 0
-nbr_stations = st.number_input(
+
+type_carburant = st.sidebar.selectbox("Carburant", ("Gazole", "SP95", "E85", "GPLc", "E10", "SP98"))
+
+"""nbr_stations = st.number_input(
     "Nombre de stations",
     min_value=1,
     max_value=100,
     value=20,
     step=1
-)
-
+)""""
+nbr_stations = 50
 
 rayon_km = st.number_input(
     "Rayon de recherches (en km)",
@@ -93,14 +103,14 @@ for i in range(nbr_station):
     
     if ((distance <= rayon_degré) and (compteur < nbr_stations)):
         (fl.Marker(location = [lat_i, long_i],
-                       popup = str(coord_prix.iloc[i,2]) + " €"
+                       popup = str(coord_prix.[type_carburant]) + "€"
                        )).add_to(map_init)
         
         compteur += 1
 
 LocateControl(
-    auto_start=True,      # Ne lance pas la recherche automatiquement au chargement
-    flyTo=True,           # Anime le déplacement vers la position
+    auto_start=True,    
+    flyTo=True,        
     keepCurrentZoomLevel=True
 ).add_to(map_init)
         
