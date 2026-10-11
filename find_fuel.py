@@ -6,6 +6,7 @@ from folium.plugins import LocateControl
 import streamlit as st
 from streamlit_folium import folium_static
 from streamlit_geolocation import streamlit_geolocation
+from geopy.geocoders import Nominatim
 
 @st.cache_data
 def preparer_donnees(download_actif):
@@ -46,6 +47,15 @@ coord_prix = preparer_donnees(download_activation)
 st.write("Localisez-moi pour trouver les stations :")
 loc = streamlit_geolocation()
 
+adresse = st.sidebar.text_input(
+    "Entrez votre adresse de départ :"
+)
+
+if (adresse):
+    localisation = geolocator.geocode(adresse)
+    lat_init = location.latitude
+    long_init = localisation.longitude
+
 if loc['latitude'] is None or loc['longitude'] is None:
     st.info("👆 Veuillez cliquer sur le bouton de localisation pour afficher la carte.")
     st.stop()
@@ -84,6 +94,7 @@ rayon_km = st.sidebar.number_input(
     value=10.0,
     step=1.0
 )
+
 
 rayon_degré = rayon_km / 111.0
 
