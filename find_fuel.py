@@ -55,7 +55,7 @@ if (adresse):
     geolocator = Nominatim(user_agent="find_fuel_antonin")
     localisation = geolocator.geocode(adresse)
     if (localisation):
-        lat_init = location.latitude
+        lat_init = localisation.latitude
         long_init = localisation.longitude
         st.sidebar.success("Position trouvée !")
     else:
