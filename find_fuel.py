@@ -68,16 +68,16 @@ compteur = 0
 
 type_carburant = st.sidebar.selectbox("Carburant", ("Gazole", "SP95", "E85", "GPLc", "E10", "SP98"))
 
-"""nbr_stations = st.number_input(
-    "Nombre de stations",
-    min_value=1,
-    max_value=100,
-    value=20,
-    step=1
-)"""
+#nbr_stations = st.number_input(
+#    "Nombre de stations",
+#    min_value=1,
+#    max_value=100,
+#    value=20,
+#    step=1
+#)
 nbr_stations = 50
 
-rayon_km = st.number_input(
+rayon_km = st.sidebar.number_input(
     "Rayon de recherches (en km)",
     min_value=1.0,
     max_value=100.0,
