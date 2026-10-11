@@ -24,8 +24,8 @@ def preparer_donnees(download_actif):
 
     coord_prix = pd.DataFrame()
 
-    coord_prix[0] = pd.to_numeric(carb['latitude'], errors='coerce')
-    coord_prix[1] = pd.to_numeric(carb['longitude'], errors='coerce')
+    coord_prix['latitude'] = pd.to_numeric(carb['latitude'], errors='coerce')
+    coord_prix['longitude'] = pd.to_numeric(carb['longitude'], errors='coerce')
 
     coord_prix['Prix Gazole'] = carb['Prix Gazole']
     coord_prix['Prix SP95'] = carb['Prix SP95']
@@ -34,14 +34,11 @@ def preparer_donnees(download_actif):
     coord_prix['Prix E10'] = carb['Prix E10']
     coord_prix['Prix SP98'] = carb['Prix SP98']
 
-
-    
     return coord_prix
 
 st.title("Prix des carburants en temps réel")
 
 download_activation = True
-
 coord_prix = preparer_donnees(download_activation)
 
 st.write("Localisez-moi pour trouver les stations :")
@@ -62,7 +59,7 @@ if (adresse):
     else:
         st.sidebar.error("Adresse introuvable, essayez avec le nom de la ville.")
         st.stop()
-if ((loc['latitude'] is not None) and (loc['longitude'] is not None)):
+elif ((loc['latitude'] is not None) and (loc['longitude'] is not None)):
     lat_init = loc['latitude']
     long_init = loc['longitude']
 else:
