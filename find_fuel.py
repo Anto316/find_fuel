@@ -103,7 +103,7 @@ for i in range(nbr_station):
     
     if ((distance <= rayon_degré) and (compteur < nbr_stations)):
         (fl.Marker(location = [lat_i, long_i],
-                       popup = str(coord_prix.[type_carburant]) + "€"
+                       popup = str(coord_prix[type_carburant]) + "€"
                        )).add_to(map_init)
         
         compteur += 1
