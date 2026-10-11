@@ -30,7 +30,7 @@ def preparer_donnees(download_actif):
     coord_prix['Prix Gazole'] = carb['Prix Gazole']
     coord_prix['Prix SP95'] = carb['Prix SP95']
     coord_prix['Prix E85'] = carb['Prix E85']
-    coord_prix['Prix GPlc'] = carb['Prix GPLc']
+    coord_prix['Prix GPLc'] = carb['Prix GPLc']
     coord_prix['Prix E10'] = carb['Prix E10']
     coord_prix['Prix SP98'] = carb['Prix SP98']
 
@@ -51,9 +51,14 @@ adresse = st.sidebar.text_input(
     "Entrez votre adresse de départ :"
 )
 
-if (adresse):
+if ((loc['latitude'] is not None) and (loc['longitude'] is not None)):
+    lat_init = loc['latitude']
+    long_init = loc['longitude']
+
+elif (adresse):
     geolocator = Nominatim(user_agent="find_fuel_antonin")
     localisation = geolocator.geocode(adresse)
+
     if (localisation):
         lat_init = localisation.latitude
         long_init = localisation.longitude
@@ -65,8 +70,6 @@ else:
     st.info("👆 Veuillez cliquer sur le bouton de localisation pour afficher la carte.")
     st.stop()
 
-lat_init = loc['latitude']
-long_init = loc['longitude']
     # st.success(f"Position trouvée : {lat_init}, {long_init}")
 #else :
  #   lat_init = 45.1916697
