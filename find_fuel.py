@@ -62,7 +62,6 @@ if (adresse):
         st.sidebar.error("Adresse introuvable, essayez avec le nom de la ville.")
         st.stop()
 else:
-    loc['latitude'] is None or loc['longitude'] is None:
     st.info("👆 Veuillez cliquer sur le bouton de localisation pour afficher la carte.")
     st.stop()
 
